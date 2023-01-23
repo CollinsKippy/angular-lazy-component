@@ -1,5 +1,6 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { DATA } from './app.component';
+import { DATA, MY_TOKEN } from './app.component';
+import { HelloService } from './hello.service';
 
 @Component({
   selector: 'hello',
@@ -11,8 +12,12 @@ export class HelloComponent implements OnInit {
   @Input() name: string;
 
   data = inject(DATA);
+  token = inject(MY_TOKEN);
+  helloService = inject(HelloService);
 
   ngOnInit(): void {
     console.log('data =', this.data);
+    console.log('my_token', this.token);
+    console.log('my_constant', this.helloService.myConstant);
   }
 }
