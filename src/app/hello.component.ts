@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, inject, Input, OnInit } from '@angular/core';
 import { DATA, MY_TOKEN } from './app.component';
 import { HelloService } from './hello.service';
 
@@ -12,8 +12,10 @@ export class HelloComponent implements OnInit {
   @Input() name: string;
 
   data = inject(DATA);
-  token = inject(MY_TOKEN);
+  // token = inject(MY_TOKEN);
   helloService = inject(HelloService);
+
+  constructor(@Inject(MY_TOKEN) private token: string) {}
 
   ngOnInit(): void {
     console.log('data =', this.data);
